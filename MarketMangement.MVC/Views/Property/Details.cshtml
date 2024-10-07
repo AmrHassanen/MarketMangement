@@ -1,0 +1,53 @@
+﻿@model Property
+
+<h2>Property Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5><strong>ID:</strong> @Model.ID</h5>
+        @if (Model.IP != null)
+        {
+            <p><strong>IP:</strong> @Model.IP</p>
+        }
+        @if (Model.Brand != null)
+        {
+            <p><strong>Brand:</strong> @Model.Brand</p>
+        }
+        @if (Model.IsColor != null)
+        {
+            <p><strong>Is Color Printer:</strong> @(Model.IsColor == true ? "Yes" : "No")</p>
+        }
+        @if (Model.Processor != null)
+        {
+            <p><strong>Processor:</strong> @Model.Processor</p>
+        }
+        @if (Model.HD != null)
+        {
+            <p><strong>HD:</strong> @Model.HD</p>
+        }
+        @if (Model.Ram != null)
+        {
+            <p><strong>RAM:</strong> @Model.Ram</p>
+        }
+        @if (Model.Display != null)
+        {
+            <p><strong>Display:</strong> @Model.Display</p>
+        }
+        @if (Model.CurrentUser != null)
+        {
+            <p><strong>Current User:</strong> @Model.CurrentUser</p>
+        }
+        @if (Model.Ports != null)
+        {
+            <p><strong>Ports:</strong> @Model.Ports</p>
+        }
+        @if (Model.Speed != null)
+        {
+            <p><strong>Speed:</strong> @Model.Speed</p>
+        }
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-warning">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

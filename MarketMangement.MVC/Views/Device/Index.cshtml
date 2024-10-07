@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MarketMangement.Service.DTOs.DeviceDto>
+
+@{
+    ViewData["Title"] = "Devices";
+}
+
+<h1>Devices</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Device</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Device Name</th>
+            <th>Category ID</th> <!-- Consider changing to Category Name if available -->
+            <th>Acquisition Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var device in Model)
+        {
+            <tr>
+                <td>@device.ID</td>
+                <td>@device.DeviceName</td>
+                <td>@device.DeviceCategoryId</td> <!-- Consider changing to display CategoryName -->
+                <td>@device.AcquisitionDate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@device.ID" class="btn btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@device.ID" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@device.ID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

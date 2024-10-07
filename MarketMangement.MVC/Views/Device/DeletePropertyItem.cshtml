@@ -1,0 +1,21 @@
+﻿@model MarketMangement.Service.DTOs.PropertyItemDto
+
+@{
+    ViewData["Title"] = "Delete Property Item";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Are you sure you want to delete this property item?</h3>
+
+<div>
+    <h4>Property Name: @Model.Name</h4>
+    <p>Associated Device ID: @Model.DeviceId</p>
+
+    <form asp-action="DeletePropertyItemConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="DeviceId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Details" asp-route-id="@Model.DeviceId" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

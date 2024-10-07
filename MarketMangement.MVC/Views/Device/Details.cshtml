@@ -1,0 +1,72 @@
+﻿@model MarketMangement.Service.DTOs.DeviceDto
+
+@{
+    ViewData["Title"] = "Device Details";
+}
+
+<h1>Device Details</h1>
+
+<div>
+    <h4>Device</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Model.ID</dd>
+
+        <dt class="col-sm-2">Device Name</dt>
+        <dd class="col-sm-10">@Model.DeviceName</dd>
+
+        <dt class="col-sm-2">Category ID</dt>
+        <dd class="col-sm-10">@Model.DeviceCategoryId</dd> <!-- Consider changing to display CategoryName -->
+
+        <dt class="col-sm-2">Acquisition Date</dt>
+        <dd class="col-sm-10">@Model.AcquisitionDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">Memo</dt>
+        <dd class="col-sm-10">@Model.Memo</dd>
+    </dl>
+</div>
+
+<h4>Property Items</h4>
+
+@if (Model.PropertyItems != null && Model.PropertyItems.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Property Name</th>
+                <th>Actions</th> <!-- Add a column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var property in Model.PropertyItems)
+            {
+                <tr>
+                    <td>@property.Name</td>
+                    <td>
+                        <!-- Edit link -->
+                        <a asp-action="EditPropertyItem" asp-route-id="@property.Id" class="btn btn-sm btn-warning">Edit</a>
+
+                        <!-- Delete link -->
+                        <a asp-action="DeletePropertyItem" asp-route-id="@property.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No property items available.</p>
+}
+
+<!-- Link to add a new property item -->
+<div>
+    <a asp-action="AddPropertyItem" asp-route-deviceId="@Model.ID" class="btn btn-sm btn-primary">Add Property Item</a>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-warning">Edit Device</a>
+    <a asp-action="Index" class="btn btn-primary">Back to Device List</a>
+</div>
+

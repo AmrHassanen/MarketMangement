@@ -1,0 +1,29 @@
+﻿@model DeviceCategory
+
+@{
+    ViewData["Title"] = "Edit Device Category";
+}
+
+<h1>Edit Device Category</h1>
+
+<form asp-action="Edit" method="post" class="form-horizontal">
+    <div class="form-group">
+        <input type="hidden" asp-for="ID" />
+        <label asp-for="CategoryName" class="control-label"></label>
+        <input asp-for="CategoryName" class="form-control" />
+        <span asp-validation-for="CategoryName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PropertyId" class="control-label">Property</label>
+        <select asp-for="PropertyId" asp-items="ViewBag.Properties" class="form-control">
+            <option value="">Select Property</option>
+        </select>
+        <span asp-validation-for="PropertyId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a href="@Url.Action("Index", "DeviceCategory")" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

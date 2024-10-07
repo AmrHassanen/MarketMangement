@@ -1,0 +1,42 @@
+﻿@model MarketMangement.Service.DTOs.DeviceDto
+
+@{
+    ViewData["Title"] = "Create Device";
+}
+
+<h1>Create Device</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="DeviceName" class="control-label"></label>
+        <input asp-for="DeviceName" class="form-control" />
+        <span asp-validation-for="DeviceName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DeviceCategoryId" class="control-label">Device Category</label>
+        <select asp-for="DeviceCategoryId" class="form-control" asp-items="ViewBag.DeviceCategories"></select>
+        <span asp-validation-for="DeviceCategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AcquisitionDate" class="control-label"></label>
+        <input asp-for="AcquisitionDate" class="form-control" type="date" />
+        <span asp-validation-for="AcquisitionDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Memo" class="control-label"></label>
+        <textarea asp-for="Memo" class="form-control"></textarea>
+        <span asp-validation-for="Memo" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

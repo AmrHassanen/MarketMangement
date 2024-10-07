@@ -1,0 +1,70 @@
+﻿@model Property
+
+<h2>Edit Property</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ID" />
+
+    <div class="form-group">
+        <label for="IP">IP Address (optional)</label>
+        <input type="text" class="form-control" asp-for="IP" />
+        <span asp-validation-for="IP" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Brand">Brand</label>
+        <input type="text" class="form-control" asp-for="Brand" required />
+        <span asp-validation-for="Brand" class="text-danger"></span>
+    </div>
+
+    <!-- Laptop-specific fields -->
+    <div class="form-group">
+        <label for="Processor">Processor (Laptops)</label>
+        <input type="text" class="form-control" asp-for="Processor" />
+        <span asp-validation-for="Processor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="HD">Hard Drive (Laptops)</label>
+        <input type="text" class="form-control" asp-for="HD" />
+        <span asp-validation-for="HD" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Ram">RAM (Laptops)</label>
+        <input type="text" class="form-control" asp-for="Ram" />
+        <span asp-validation-for="Ram" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Display">Display (Laptops)</label>
+        <input type="text" class="form-control" asp-for="Display" />
+        <span asp-validation-for="Display" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="CurrentUser">Current User</label>
+        <input type="text" class="form-control" asp-for="CurrentUser" />
+        <span asp-validation-for="CurrentUser" class="text-danger"></span>
+    </div>
+
+    <!-- Switch-specific fields -->
+    <div class="form-group">
+        <label for="Ports">Ports (Switches)</label>
+        <input type="number" class="form-control" asp-for="Ports" />
+        <span asp-validation-for="Ports" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Speed">Speed (Switches)</label>
+        <input type="text" class="form-control" asp-for="Speed" />
+        <span asp-validation-for="Speed" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Property>
+
+<h2>Device Properties List</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>IP</th>
+            <th>Brand</th>
+            <th>Is Color Printer</th>
+            <th>Processor</th>
+            <th>HD</th>
+            <th>RAM</th>
+            <th>Display</th>
+            <th>Current User</th>
+            <th>Ports</th>
+            <th>Speed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var property in Model)
+        {
+            <tr>
+                <td>@property.ID</td>
+                <td>@property.IP</td>
+                <td>@property.Brand</td>
+                <td>@property.IsColor</td>
+                <td>@property.Processor</td>
+                <td>@property.HD</td>
+                <td>@property.Ram</td>
+                <td>@property.Display</td>
+                <td>@property.CurrentUser</td>
+                <td>@property.Ports</td>
+                <td>@property.Speed</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@property.ID" class="btn btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@property.ID" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@property.ID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-success">Add New Property</a>

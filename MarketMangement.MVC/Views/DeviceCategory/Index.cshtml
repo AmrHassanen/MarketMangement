@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DeviceCategory>
+
+@{
+    ViewData["Title"] = "Device Categories";
+}
+
+<h2>Device Categories</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Device Category</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Category Name</th>
+            <th>Property</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.ID</td>
+                    <td>@category.CategoryName</td>
+                    <td>
+                        <select asp-for="@category.PropertyId"
+                                asp-items="ViewBag.Properties"
+                                class="form-control"
+                                disabled>
+                            <!-- Use 'disabled' if you don't want to allow editing directly here -->
+                            <option value="">Select Property</option>
+                        </select>
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@category.ID" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@category.ID" class="btn btn-danger">Delete</a>
+                        <a asp-action="Details" asp-route-id="@category.ID" class="btn btn-info">Details</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">No device categories available.</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,61 @@
+﻿@model PropertyDto
+
+<h2>Create New Property</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="IP">IP Address (optional)</label>
+        <input type="text" class="form-control" asp-for="IP" />
+    </div>
+
+    <div class="form-group">
+        <label for="Brand">Brand</label>
+        <input type="text" class="form-control" asp-for="Brand" required />
+    </div>
+
+    <div class="form-group">
+        <label for="IsColor">Is Color Printer</label>
+        <select class="form-control" asp-for="IsColor">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Processor">Processor (Laptops)</label>
+        <input type="text" class="form-control" asp-for="Processor" />
+    </div>
+
+    <div class="form-group">
+        <label for="HD">Hard Drive (Laptops)</label>
+        <input type="text" class="form-control" asp-for="HD" />
+    </div>
+
+    <div class="form-group">
+        <label for="Ram">RAM (Laptops)</label>
+        <input type="text" class="form-control" asp-for="Ram" />
+    </div>
+
+    <div class="form-group">
+        <label for="Display">Display (Laptops)</label>
+        <input type="text" class="form-control" asp-for="Display" />
+    </div>
+
+    <div class="form-group">
+        <label for="CurrentUser">Current User</label>
+        <input type="text" class="form-control" asp-for="CurrentUser" />
+    </div>
+
+    <div class="form-group">
+        <label for="Ports">Ports (Switches)</label>
+        <input type="number" class="form-control" asp-for="Ports" />
+    </div>
+
+    <div class="form-group">
+        <label for="Speed">Speed (Switches)</label>
+        <input type="text" class="form-control" asp-for="Speed" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

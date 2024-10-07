@@ -1,0 +1,14 @@
+﻿@model PropertyDto
+
+<h2>Delete Property</h2>
+
+<div class="alert alert-danger">
+    <h4>Are you sure you want to delete this property?</h4>
+    <p>@Model.Brand (@Model.ID)</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="ID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
